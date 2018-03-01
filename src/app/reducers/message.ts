@@ -1,20 +1,37 @@
 import { Action, createSelector, createFeatureSelector } from '@ngrx/store'
+import { Message } from '../model/Message'
 
 export interface State {
-  username: string;
+  username: string
+  messages: Message[]
 }
 
 export const initialState: State = {
-  username: 'Anonymous'
+  username: 'Anonymous',
+  messages: []
 }
 
 export enum MessageActionTypes {
   SET_USERNAME = 'SET_USERNAME',
-  SET_MESSAGES = 'SET_MESSAGES',
+  FETCH_MESSAGES = 'FETCH_MESSAGES',
+  RECEIVED_MESSAGES = 'RECEIVED_MESSAGES',
+  POST_MESSAGE = 'POST_MESSAGE',
 }
 
-export class Decrement implements Action {
-  readonly type = MessageActionTypes.SET_MESSAGES
+export class FetchMessages implements Action {
+  readonly type = MessageActionTypes.FETCH_MESSAGES
+}
+
+export class ReceivedMessages implements Action {
+  readonly type = MessageActionTypes.RECEIVED_MESSAGES
+
+  constructor(public msgs: Message[]) {}
+}
+
+export class PostMessage implements Action {
+  readonly type = MessageActionTypes.POST_MESSAGE
+
+  constructor(public msg: string) {}
 }
 
 export class SetUsername implements Action {
@@ -23,15 +40,24 @@ export class SetUsername implements Action {
   constructor(public username: string) {}
 }
 
-export type MessageActions = Decrement | SetUsername
+export type MessageActions = 
+  FetchMessages |
+  ReceivedMessages |
+  PostMessage |
+  SetUsername
 
 export function messageReducer(state: State = initialState, action: MessageActions) {
   switch (action.type) {
     case MessageActionTypes.SET_USERNAME:
       return {
-          ...initialState,
+          ...state,
           username: action.username
       } 
+    case MessageActionTypes.RECEIVED_MESSAGES:
+      return {
+        ...state,
+        messages: action.msgs
+      }
 
     default: return state
   }
@@ -39,3 +65,4 @@ export function messageReducer(state: State = initialState, action: MessageActio
 
 export const selectMessage = createFeatureSelector<State>('message')
 export const selectUsername = createSelector(selectMessage, (state: State) => state.username)
+export const selectMessages = createSelector(selectMessage, (state: State) => state.messages)

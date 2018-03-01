@@ -12,7 +12,3 @@ export const reducers: ActionReducerMap<State> = {
 export const initialState: State = {
     message: messageState
 }
-
-
-  
-

@@ -15,8 +15,6 @@ export class MessageService {
 
   constructor(private http: HttpClient) {}
 
-  username = 'Anonymous'
-
   fetchMessages(): Observable<Message[]> {
     return this.http.get(
       messageApiUrl,
@@ -27,11 +25,10 @@ export class MessageService {
     ) as Observable<Message[]>
   }
 
-  postMessage(msg: String) {
-    let message = { userName: this.username, msg }
+  postMessage(msg: string, userName: string) {
     return this.http.post(
       messageApiUrl,
-      message,
+      { userName, msg },
       httpOptions
     ) as Observable<Message>
   }
