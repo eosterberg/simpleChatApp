@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { MessageService } from '../message.service'
+
+import { Store, select } from '@ngrx/store'
+import { Observable } from 'rxjs/Observable'
+import { State } from '../reducers/main'
+import { State as MessageState, MessageActionTypes, SetUsername, selectMessage, selectUsername} from '../reducers/message'
 
 @Component({
   selector: 'app-settings',
@@ -8,9 +12,18 @@ import { MessageService } from '../message.service'
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private messageService: MessageService) { }
+  username$: Observable<string>
+
+  constructor(
+    private store: Store<State>
+  ) { 
+    this.username$ = store.pipe(select(selectUsername))
+  }
 
   ngOnInit() {
   }
 
+  input(e) {
+    this.store.dispatch(new SetUsername(e.target.value))
+  }
 }

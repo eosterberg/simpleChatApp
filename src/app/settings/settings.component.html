@@ -1,6 +1,6 @@
 <h1>Settings</h1>
 <div>
   <label>Username:
-    <input [(ngModel)]="messageService.username" placeholder="name">
+    <input (input)="input($event)" value="{{username$ | async}}" placeholder="name">
   </label>
 </div>
