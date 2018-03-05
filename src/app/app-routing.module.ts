@@ -7,6 +7,7 @@ import { MessagesComponent } from './messages/messages.component'
 import { WelcomeComponent } from './welcome/welcome.component'
 
 const routes: Routes = [
+  { path: '', redirectTo: '/welcome', pathMatch: 'full'},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'messages', component: MessagesComponent },
