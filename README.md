@@ -11,6 +11,10 @@ Install ['Allow-Control-Allow-Origin: *'-extension](https://chrome.google.com/we
 
 Dont forget to disable it after this tutorial!
 
+Install angular cli:
+
+`$ npm install -g @angular/cli`
+
 Set ip address to the chat server in: [environment.ts](./src/environments/environment.ts)
 
 Go to root folder:
@@ -21,6 +25,6 @@ Install dependencies:
 
 `$ npm i`
 
-Start the server and open in a tab:
+Start serving the web app and open it in a tab:
 
 `$ ng serve --open`

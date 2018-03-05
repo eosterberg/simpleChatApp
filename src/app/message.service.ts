@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable'
 import { tap } from 'rxjs/operators'
 import { messages, Message } from './model/Message'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment'
 
 const messageApiUrl = environment.messageApiUrl
 const httpOptions = {
