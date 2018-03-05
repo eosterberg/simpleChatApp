@@ -1,9 +1,0 @@
-<h1>Messages</h1>
-<div>
-  <p *ngFor='let m of messages$ | async'>{{m.userName | uppercase}} said: {{m.msg}}</p>
-</div>
-<div>
-    <label>New message:
-        <input (keyup)="onKey($event)">
-    </label>
-</div>

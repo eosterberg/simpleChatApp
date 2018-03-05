@@ -5,16 +5,11 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component'
 import { AppRoutingModule } from './app-routing.module'
-import { SettingsComponent } from './settings/settings.component'
-import { MessagesComponent } from './messages/messages.component'
-import { MessageService } from './message.service'
 import { WelcomeComponent } from './welcome/welcome.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    SettingsComponent,
-    MessagesComponent,
     WelcomeComponent
   ],
   imports: [
@@ -23,7 +18,7 @@ import { WelcomeComponent } from './welcome/welcome.component'
     FormsModule,
     HttpClientModule
   ],
-  providers: [MessageService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
