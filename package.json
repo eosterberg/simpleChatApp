@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "mkdir -p src/eds;git clone --recurse-submodules git@git.mt.rxn.us:ericsson-design-system/vanilla-components/common.git src/eds/common"
   },
   "private": true,
   "dependencies": {
