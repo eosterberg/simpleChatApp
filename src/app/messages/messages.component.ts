@@ -24,10 +24,10 @@ export class MessagesComponent implements OnInit {
 
   onKey(event: KeyboardEvent) {
     if (event.key === 'Enter') {
-      let target = event.target as HTMLInputElement
+      const target = event.target as HTMLInputElement
       this.messageService.postMessage(target.value).subscribe(m => {
         this.getMessages()
-        console.log('message sent:', m)        
+        console.log('message sent:', m)
       })
       target.value = ''
     }

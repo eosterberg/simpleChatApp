@@ -28,7 +28,7 @@ export class MessageService {
   }
 
   postMessage(msg: String) {
-    let message = { userName: this.username, msg }
+    const message = { userName: this.username, msg }
     return this.http.post(
       messageApiUrl,
       message,
